@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rule of 72 Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #calculator {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div id="calculator">
+  <h2>Rule of 72 Calculator</h2>
+  <label for="interestRate">Annual Interest Rate (%):</label>
+  <input type="number" id="interestRate" placeholder="Enter the annual interest rate">
+
+  <button onclick="calculateYears()">Calculate</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  function calculateYears() {
+    var interestRate = parseFloat(document.getElementById('interestRate').value);
+
+    if (isNaN(interestRate) || interestRate <= 0) {
+      alert('Please enter a valid annual interest rate.');
+      return;
+    }
+
+    var yearsToDouble = 72 / interestRate;
+    displayResult(yearsToDouble);
+  }
+
+  function displayResult(yearsToDouble) {
+    var resultElement = document.getElementById('result');
+    resultElement.innerHTML = '<h3>It will take approximately ' + yearsToDouble.toFixed(2) + ' years to double your investment</h3>';
+  }
+</script>
+
+</body>
+</html>
